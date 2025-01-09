@@ -1,16 +1,26 @@
 
 from dataclasses import dataclass
+from random import random
 from typing import Iterable
 
-def activation(matrix: Iterable[float]) -> int: ...
+from numpy import array, dot
 
 @dataclass
 class Perceptron:
-    entries : Iterable[float]
-    wieghts:  Iterable[float]
-    bias : float 
+    weights:  Iterable[float] 
+    bias : float = random()
+    learning_rate: float = 0.01
+    epochs: int = 200
 
+    def predict(self, dataset: Iterable[float]) -> int: 
+        linear_output = dot(dataset, self.weights) + self.bias
+        return (linear_output >= 0.5).astype(int)
 
-    @property
-    def output(self) -> int :
-        return activation(self.entries)
+    def fit(self, dataset, target) -> None: 
+        for _ in range(self.epochs):
+            for iterated_value, iterated_target in zip(dataset, target):
+                prediction = self.predict(iterated_value)
+                update = self.learning_rate * (iterated_target - prediction)
+                self.weights += update * iterated_value
+                self.bias += update
+    
