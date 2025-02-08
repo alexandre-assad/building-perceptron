@@ -1,18 +1,19 @@
 
 from dataclasses import dataclass
 from random import random
-from typing import Iterable
+from typing import Any, Iterable
 
-from numpy import array, dot
+from numpy import array, dot, zeros
 
-@dataclass
 class Perceptron:
-    weights:  Iterable[float] 
-    bias : float = random()
-    learning_rate: float = 0.01
-    epochs: int = 200
 
-    def predict(self, dataset: Iterable[float]) -> int: 
+    def __init__(self,n_features: int, bias: float = random(), learning_rate: float = 0.01, epochs: int = 200):
+        self.weights = zeros(n_features)
+        self.bias = bias
+        self.learning_rate = learning_rate
+        self.epochs = epochs
+
+    def predict(self, dataset: Any) -> int: 
         linear_output = dot(dataset, self.weights) + self.bias
         return (linear_output >= 0.5).astype(int)
 
