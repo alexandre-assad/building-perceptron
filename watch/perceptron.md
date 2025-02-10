@@ -1,10 +1,10 @@
-   A perceptron is a form of artificial neuron developed by Frank Rosenblatt in 1958. It serves as a mathematical model employed in machine learning for tasks involving binary classification. The design and operation of a perceptron are inspired by that of a biological neuron, which includes dendrites (the inputs), a cell body (the processing unit), and an axon (the output).
+   A perceptron is a form of artificial neuron developed by Frank Rosenblatt in 1958. This model is used in binary classification settings in machine learning. The perceptron is composed of a cell body (the processing unit) that allows the inputs (the dendrites) and outputs (the axon) to connect. The presence of dendrites (the inputs), a cell body (the processing unit), and an axon (the output) characterizes the design and operation of a perceptor, which mirrors the structure of a biological neuron.  
 
-   In a biological neuron, signals are received via the dendrites, processed within the cell body, and an output signal is transmitted through the axon. In the same way, the perceptron receives weighted inputs, calculates their sum, applies an activation function, and produces an output. Nevertheless, a perceptron is a basic representation of a biological neuron and does not possess the complexity and adaptability found in its natural equivalent.
+   Neurons in a biological organism can be illustrated as the signals captured by dendrites, processed in the cell body, and then sent as output signals through the axon. Likewise, the perceptron receives inputs with weights, computes their sum, then adds an activation function, and gives the output. As it stands, the model is a neural in biological sense and exists just as an abstract entity deprived of the adjustment mechanisms found in the real world.
 
    ***
 
-   The perceptron calculates the output based on the equation below:
+   The perceptron's conclusion is based on this formula:
 
    y = f(sum{i=1}^{n} w_i x_i + b)
 
@@ -15,7 +15,7 @@
    - ( \sum_{i=1}^{n} w_i x_i + b ): The weighted sum of inputs along with the bias.
    - ( f ): The activation function, typically a step function that produces an output of ( 1 ) or ( 0 ) depending on whether the threshold is met.  
 
-   The perceptron is utilized for binary classification problems where the data can be differentiated using a linear boundary.  
+   The perceptron, a simple binary classifier, can set up a linear decision boundary which can classify the data into two compartments.
 
    ***
 
