@@ -8,15 +8,14 @@ The biological neuron receives signals through its dendrites, processes them in 
 
 The perceptron computes the output using the following equation:
 
-\[
-y = f\left(\sum_{i=1}^{n} w_i x_i + b\right)
-\]
+y = f(sum{i=1}^{n} w_i x_i + b)
+
 
 Where:
-- \( x_i \): Input features (e.g., \( x_1, x_2, \dots, x_n \)).
+- \( x_i \): Input features (e.g., \( x_1, x_2, ..., x_n \)).
 - \( w_i \): Weights associated with each input \( x_i \).
 - \( b \): Bias term, allowing the decision boundary to shift.
-- \( \sum_{i=1}^{n} w_i x_i + b \): Weighted sum of inputs and bias.
+- \( sum{i=1}^{n} w_i x_i + b \): Weighted sum of inputs and bias.
 - \( f \): Activation function, often a step function that outputs \( 1 \) or \( 0 \) based on the threshold.
 
 The perceptron is used for binary classification tasks where data can be linearly separated.
@@ -26,17 +25,17 @@ The perceptron is used for binary classification tasks where data can be linearl
 The perceptron learning rule adjusts weights iteratively to minimize classification errors. The update rule is defined as:
 
 \[
-w_i \leftarrow w_i + \Delta w_i
+w_i -> w_i + Dw_i
 \]
 
 \[
-\Delta w_i = \eta (y_{\text{true}} - y_{\text{pred}}) x_i
+Dw_i = e(y_true - y_pred) x_i
 \]
 
 Where:
-- \( \eta \): Learning rate, controlling the step size for weight updates.
-- \( y_{\text{true}} \): True label of the input data.
-- \( y_{\text{pred}} \): Predicted output of the perceptron.
+- \( e \): Learning rate, controlling the step size for weight updates.
+- \( y_true \): True label of the input data.
+- \( y_pred \): Predicted output of the perceptron.
 - \( x_i \): Corresponding input feature.
 
 Weights are updated only when the perceptron makes a misclassification.
@@ -47,10 +46,8 @@ The perceptron typically uses a **step function** as its activation function:
 
 \[
 f(z) =
-\begin{cases} 
-1, & \text{if } z \geq 0 \\
-0, & \text{if } z < 0
-\end{cases}
+1 if z >= 0 \\
+0 if z < 0
 \]
 
 This function outputs a binary result (\( 1 \) or \( 0 \)) depending on whether the weighted sum of inputs is above or below a threshold.
@@ -60,10 +57,10 @@ This function outputs a binary result (\( 1 \) or \( 0 \)) depending on whether 
 The perceptron training process involves the following steps:
 1. **Initialize weights and bias** to small random values.
 2. **For each training sample**:
-   - Compute the weighted sum: \( z = \sum_{i=1}^{n} w_i x_i + b \).
-   - Apply the step function: \( y_{\text{pred}} = f(z) \).
-   - Compare \( y_{\text{pred}} \) with \( y_{\text{true}} \) (ground truth).
-   - Update weights and bias using the learning rule if \( y_{\text{pred}} \neq y_{\text{true}} \).
+   - Compute the weighted sum: \( z = sum{i=1}^{n} w_i x_i + b \).
+   - Apply the step function: \( y_pred = f(z) \).
+   - Compare \( y_pred \) with \( y_true \) (ground truth).
+   - Update weights and bias using the learning rule if \( y_pred \neq y_true \).
 3. Repeat until the perceptron correctly classifies all training examples or a maximum number of iterations is reached.
 
 ---
