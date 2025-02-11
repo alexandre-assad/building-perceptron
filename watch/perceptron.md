@@ -1,77 +1,69 @@
+   A perceptron is a form of artificial neuron developed by Frank Rosenblatt in 1958. This model is used in binary classification settings in machine learning. The perceptron is composed of a cell body (the processing unit) that allows the inputs (the dendrites) and outputs (the axon) to connect. The presence of dendrites (the inputs), a cell body (the processing unit), and an axon (the output) characterizes the design and operation of a perceptor, which mirrors the structure of a biological neuron.  
 
+   Neurons in a biological organism can be illustrated as the signals captured by dendrites, processed in the cell body, and then sent as output signals through the axon. Likewise, the perceptron receives inputs with weights, computes their sum, then adds an activation function, and gives the output. As it stands, the model is a neural in biological sense and exists just as an abstract entity deprived of the adjustment mechanisms found in the real world.
 
-A perceptron is a type of artificial neuron introduced by Frank Rosenblatt in 1958. It is a mathematical model used in machine learning for binary classification tasks. It mimics the structure and function of a biological neuron, which consists of dendrites (inputs), a cell body (processing unit), and an axon (output).
+   ***
 
-The biological neuron receives signals through its dendrites, processes them in the cell body, and generates an output signal through the axon. Similarly, the perceptron takes weighted inputs, sums them up, applies an activation function, and produces an output. However, a perceptron is a simplified abstraction of a biological neuron and lacks the complexity and adaptability of its biological counterpart.
+   The perceptron's conclusion is based on this formula:
 
----
+   y = f(sum{i=1}^{n} w_i x_i + b)
 
-The perceptron computes the output using the following equation:
+   In this equation:
 
-\[
-y = f\left(\sum_{i=1}^{n} w_i x_i + b\right)
-\]
+   - ( x_i ): Represents the input features (e.g., ( x_1, x_2, ..., x_n )).
+   - ( w_i ): Denotes the weights corresponding to each input ( x_i ).
+   - ( \sum_{i=1}^{n} w_i x_i + b ): The weighted sum of inputs along with the bias.
+   - ( f ): The activation function, typically a step function that produces an output of ( 1 ) or ( 0 ) depending on whether the threshold is met.  
 
-Where:
-- \( x_i \): Input features (e.g., \( x_1, x_2, \dots, x_n \)).
-- \( w_i \): Weights associated with each input \( x_i \).
-- \( b \): Bias term, allowing the decision boundary to shift.
-- \( \sum_{i=1}^{n} w_i x_i + b \): Weighted sum of inputs and bias.
-- \( f \): Activation function, often a step function that outputs \( 1 \) or \( 0 \) based on the threshold.
+   The perceptron, a simple binary classifier, can set up a linear decision boundary which can classify the data into two compartments.
 
-The perceptron is used for binary classification tasks where data can be linearly separated.
+   ***
 
----
+   The perceptron learning rule modifies weights in a step-by-step manner to reduce classification errors. The formula for updating the weights is expressed as:
 
-The perceptron learning rule adjusts weights iteratively to minimize classification errors. The update rule is defined as:
+   [ w_i -> w_i + Delta w_i ]
 
-\[
-w_i \leftarrow w_i + \Delta w_i
-\]
+   [ Delta w_i = e(y_true - y_pred) x_i ]
 
-\[
-\Delta w_i = \eta (y_{\text{true}} - y_{\text{pred}}) x_i
-\]
+   In this context:
 
-Where:
-- \( \eta \): Learning rate, controlling the step size for weight updates.
-- \( y_{\text{true}} \): True label of the input data.
-- \( y_{\text{pred}} \): Predicted output of the perceptron.
-- \( x_i \): Corresponding input feature.
+   - ( e ): Learning rate, which dictates the magnitude of each weight adjustment.
+   - ( y_true ): Actual label associated with the input data.
+   - ( y_pred ): Output predicted by the perceptron.
+   - ( x_i ): The relevant input feature.  
 
-Weights are updated only when the perceptron makes a misclassification.
+   Weights are adjusted only when the perceptron incorrectly classifies an input.
 
----
+   ***
 
-The perceptron typically uses a **step function** as its activation function:
+   The perceptron generally employs a step function as its activation mechanism:
 
-\[
-f(z) =
-\begin{cases} 
-1, & \text{if } z \geq 0 \\
-0, & \text{if } z < 0
-\end{cases}
-\]
+   \[
+   f(z) =
+   1 if z >= 0 \\
+   0 if z < 0
+   \]
 
-This function outputs a binary result (\( 1 \) or \( 0 \)) depending on whether the weighted sum of inputs is above or below a threshold.
+   This function generates a binary output (( 1 ) or ( 0 )) based on whether the total weighted input exceeds or falls short of a certain threshold.
 
----
+   ---
 
-The perceptron training process involves the following steps:
-1. **Initialize weights and bias** to small random values.
-2. **For each training sample**:
-   - Compute the weighted sum: \( z = \sum_{i=1}^{n} w_i x_i + b \).
-   - Apply the step function: \( y_{\text{pred}} = f(z) \).
-   - Compare \( y_{\text{pred}} \) with \( y_{\text{true}} \) (ground truth).
-   - Update weights and bias using the learning rule if \( y_{\text{pred}} \neq y_{\text{true}} \).
-3. Repeat until the perceptron correctly classifies all training examples or a maximum number of iterations is reached.
+   The perceptron training process involves the following steps:
+   1. **Initialize weights and bias** to small random values.
+   2. **For each training sample**:
+      - Compute the weighted sum: \( z = sum{i=1}^{n} w_i x_i + b \).
+      - Apply the step function: \( y_pred = f(z) \).
+      - Compare \( y_pred \) with \( y_true \) (ground truth).
+      - Update weights and bias using the learning rule if \( y_pred \neq y_true \).
+   3. Repeat until the perceptron correctly classifies all training examples or a maximum number of iterations is reached.
 
----
+   ---
 
-**The limitations of the perceptron**
-1. **Linear Separability**: The perceptron can only solve problems that are linearly separable, such as AND and OR, but fails for non-linearly separable problems like XOR.
-2. **Fixed Learning Rate**: The learning process may be slow or unstable for inappropriate learning rate values.
-3. **No Hidden Layers**: A single-layer perceptron lacks the capability to model complex relationships or hierarchical features in data.
-4. **Step Function**: The discrete step function limits the perceptron's ability to model continuous or probabilistic outputs, unlike modern neural networks with smoother activation functions.
+   **Limitations of the Perceptron**
 
-These limitations led to the development of more advanced architectures, such as multi-layer perceptrons (MLPs) with backpropagation and non-linear activation functions.
+   1. **Linear Separability**: The perceptron is only effective for problems that can be represented as linearly separable, such as AND and OR operations, but it struggles with non-linearly separable issues like XOR.
+   2. **Fixed Learning Rate**: If the learning rate is not appropriately set, the learning process can become either excessively slow or unstable.
+   3. **Absence of Hidden Layers**: A single-layer perceptron is unable to capture complex patterns or hierarchical features in datasets.
+   4. **Step Function**: The use of a discrete step function restricts the perceptron's ability to represent continuous or probabilistic outputs, in contrast to modern neural networks that utilize more fluid activation functions.  
+
+   These drawbacks prompted the innovation of more sophisticated models, including multi-layer perceptrons (MLPs) that employ backpropagation and non-linear activation functions.
